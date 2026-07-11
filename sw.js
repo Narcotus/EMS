@@ -1,5 +1,4 @@
-const CACHE_NAME = 'ems-minsk-v2';
-
+const CACHE_NAME = 'ems-minsk-v3';
 const APP_SHELL = [
   './',
   './index.html',
@@ -25,37 +24,76 @@ const APP_SHELL = [
   './icons/icon-192.svg',
 ];
 
-self.addEventListener('install', (e) => {
-  e.waitUntil(
-    caches.open(CACHE_NAME).then((c) => c.addAll(APP_SHELL)).then(() => self.skipWaiting())
+// Установка — кешируем всю оболочку
+self.addEventListener('install', (event) => {
+  event.waitUntil(
+    caches.open(CACHE_NAME).then((cache) => {
+      return Promise.all(
+        APP_SHELL.map((url) => {
+          return cache.add(url).catch((err) => {
+            console.warn('Failed to cache:', url, err);
+          });
+        })
+      );
+    }).then(() => {
+      return self.skipWaiting();
+    })
   );
 });
 
-self.addEventListener('activate', (e) => {
-  e.waitUntil(
-    caches.keys().then((keys) => Promise.all(
-      keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k))
-    )).then(() => self.clients.claim())
+// Активация — удаляем старые кеши
+self.addEventListener('activate', (event) => {
+  event.waitUntil(
+    caches.keys().then((keys) => {
+      return Promise.all(
+        keys.filter((key) => key !== CACHE_NAME).map((key) => caches.delete(key))
+      );
+    }).then(() => {
+      return self.clients.claim();
+    })
   );
 });
 
-self.addEventListener('fetch', (e) => {
-  if (e.request.method !== 'GET') return;
-  e.respondWith(
-    caches.match(e.request).then((c) => {
-      if (c) return c;
-      return fetch(e.request).then((r) => {
-        if (r && r.status === 200) {
-          const rc = r.clone();
-          caches.open(CACHE_NAME).then((c) => c.put(e.request, rc));
+// Fetch — стратегия: кеш сначала, сеть потом (Cache First)
+self.addEventListener('fetch', (event) => {
+  if (event.request.method !== 'GET') return;
+
+  event.respondWith(
+    caches.match(event.request).then((cachedResponse) => {
+      // Найдено в кеше — возвращаем сразу
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+
+      // Нет в кеше — идём в сеть
+      return fetch(event.request).then((networkResponse) => {
+        // Кешируем успешные ответы
+        if (networkResponse && networkResponse.status === 200) {
+          const responseClone = networkResponse.clone();
+          caches.open(CACHE_NAME).then((cache) => {
+            cache.put(event.request, responseClone);
+          });
         }
-        return r;
+        return networkResponse;
       }).catch(() => {
-        if (e.request.headers.get('accept').includes('text/html')) {
-          return caches.match('./');
+        // Офлайн — для HTML отдаём index.html
+        if (event.request.headers.get('accept') && 
+            event.request.headers.get('accept').includes('text/html')) {
+          return caches.match('./') || caches.match('./index.html');
         }
-        return new Response('Offline', { status: 503 });
+        // Для остального — ошибка
+        return new Response('Офлайн. Данные недоступны.', { 
+          status: 503,
+          headers: { 'Content-Type': 'text/plain; charset=utf-8' }
+        });
       });
     })
   );
+});
+
+// Сообщение от клиента — принудительное обновление кеша
+self.addEventListener('message', (event) => {
+  if (event.data === 'skipWaiting') {
+    self.skipWaiting();
+  }
 });
