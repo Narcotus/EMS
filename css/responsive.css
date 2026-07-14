@@ -1,0 +1,233 @@
+/* ============================================================
+   RESPONSIVE — Адаптивность для всех устройств
+   ============================================================ */
+
+/* Планшеты (горизонтальная ориентация) */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .main-content {
+    padding: var(--space-lg);
+    max-width: 100%;
+    padding-left: var(--space-2xl);
+    padding-right: var(--space-2xl);
+  }
+  
+  .hero-greeting-text {
+    font-size: 19px;
+  }
+  
+  .section-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-lg);
+  }
+}
+
+/* Планшеты (вертикальная ориентация) и большие телефоны */
+@media (max-width: 767px) {
+  .main-content {
+    padding: var(--space-md);
+  }
+  
+  .app-header h1 {
+    font-size: 15px;
+  }
+  
+  .sidebar {
+    width: 280px;
+    left: -300px;
+  }
+  
+  /* Home */
+  .hero-banner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-md);
+    padding: var(--space-lg) var(--space-xl);
+    min-height: auto;
+  }
+  
+  .hero-right {
+    text-align: left;
+    width: 100%;
+  }
+  
+  .hero-greeting-text {
+    font-size: 17px;
+  }
+  
+  .hero-time-icon {
+    font-size: 30px;
+  }
+  
+  .hero-date {
+    font-size: 14px;
+  }
+  
+  .section-cards-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-md);
+  }
+  
+  .section-card {
+    padding: var(--space-lg) var(--space-md);
+  }
+  
+  .section-card-icon {
+    font-size: 28px;
+  }
+  
+  .section-card-title {
+    font-size: 14px;
+  }
+  
+  .section-card-desc {
+    font-size: 12px;
+  }
+  
+  .favorites-grid {
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  }
+}
+
+/* Телефоны */
+@media (max-width: 480px) {
+  .main-content {
+    padding: var(--space-sm);
+  }
+  
+  .app-header {
+    padding: var(--space-sm) var(--space-md);
+    min-height: 48px;
+  }
+  
+  .app-header h1 {
+    font-size: 13px;
+  }
+  
+  .menu-btn,
+  .theme-btn {
+    font-size: 18px;
+    min-width: 32px;
+    min-height: 32px;
+    padding: var(--space-xs);
+  }
+  
+  /* Home */
+  .hero-greeting-text {
+    font-size: 15px;
+  }
+  
+  .hero-time-icon {
+    font-size: 26px;
+  }
+  
+  .hero-banner {
+    padding: var(--space-md) var(--space-lg);
+    border-radius: var(--radius-sm);
+  }
+  
+  .hero-date {
+    font-size: 13px;
+  }
+  
+  .section-cards-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+  }
+  
+  .section-card {
+    padding: var(--space-md) var(--space-sm);
+    border-radius: var(--radius-sm);
+  }
+  
+  .section-card-icon {
+    font-size: 24px;
+  }
+  
+  .section-card-title {
+    font-size: 13px;
+  }
+  
+  .section-card-desc {
+    font-size: 11px;
+  }
+  
+  .section-card-arrow {
+    font-size: 16px;
+  }
+  
+  .favorites-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: var(--space-sm);
+  }
+  
+  .favorite-card {
+    padding: var(--space-sm) var(--space-md);
+    font-size: 13px;
+  }
+  
+  .favorite-icon {
+    font-size: 18px;
+  }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 360px) {
+  .section-cards-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-xs);
+  }
+  
+  .section-card {
+    padding: var(--space-sm) var(--space-xs);
+  }
+  
+  .section-card-icon {
+    font-size: 20px;
+  }
+  
+  .section-card-title {
+    font-size: 12px;
+  }
+  
+  .section-card-desc {
+    font-size: 10px;
+  }
+  
+  .hero-greeting-text {
+    font-size: 14px;
+  }
+  
+  .hero-time-icon {
+    font-size: 22px;
+  }
+}
+
+/* Десктопы и большие экраны */
+@media (min-width: 1025px) {
+  .main-content {
+    padding: var(--space-2xl);
+    max-width: 1200px;
+  }
+  
+  .hero-greeting-text {
+    font-size: 22px;
+  }
+  
+  .hero-time-icon {
+    font-size: 40px;
+  }
+  
+  .hero-date {
+    font-size: 17px;
+  }
+  
+  .section-cards-grid {
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--space-lg);
+  }
+  
+  .favorites-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: var(--space-lg);
+  }
+}

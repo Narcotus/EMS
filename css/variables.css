@@ -1,0 +1,70 @@
+/* ============================================================
+   VARIABLES — Единые переменные для всего приложения
+   ============================================================ */
+:root {
+  /* Цвета */
+  --primary: #800020;
+  --primary-hover: #a00028;
+  --primary-light: #e8d0d4;
+  --on-primary: #FFFFFF;
+
+  --background: #F9FAFC;
+  --surface: #F0F4F8;
+  --surface-hover: #e8ecf0;
+  --surface-card: #FFFFFF;
+
+  --on-surface: #1A1C1E;
+  --on-surface-secondary: #5C5E61;
+  --on-surface-muted: #8A8C8E;
+
+  --border: #C4C7C5;
+  --border-active: #800020;
+
+  --error: #BA1A1A;
+  --error-bg: #FFEBEE;
+  --error-text: #C62828;
+
+  --success-bg: #E8F5E9;
+  --success-text: #2E7D32;
+  --warning-bg: #FFFDE7;
+  --warning-text: #F57F17;
+  --danger-bg: #FFEBEE;
+  --danger-text: #C62828;
+
+  --shadow: rgba(0, 0, 0, 0.06);
+  --shadow-hover: rgba(128, 0, 32, 0.10);
+  --modal-shadow: rgba(0, 0, 0, 0.4);
+
+  /* Скругления */
+  --radius: 12px;
+  --radius-sm: 8px;
+
+  /* Анимации */
+  --transition: 0.2s ease;
+  
+  /* Единые отступы */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 12px;
+  --space-lg: 16px;
+  --space-xl: 20px;
+  --space-2xl: 24px;
+  --space-3xl: 28px;
+}
+
+/* Тёмная тема */
+body.dark-theme {
+  --background: #1a1a1a;
+  --surface: #242424;
+  --surface-hover: #2d2d2d;
+  --surface-card: #2d2d2d;
+  --on-surface: #f0f0f0;
+  --on-surface-secondary: #b0b0b0;
+  --on-surface-muted: #777777;
+  --border: #3a3a3a;
+  --border-active: #800020;
+  --shadow: rgba(0, 0, 0, 0.4);
+  --shadow-hover: rgba(128, 0, 32, 0.2);
+  --modal-shadow: rgba(0, 0, 0, 0.7);
+  --primary-light: #3a1a20;
+}

@@ -1,0 +1,152 @@
+/* ============================================================
+   CALCULATORS — Стили для калькуляторов
+   ============================================================ */
+
+/* Карточка калькулятора — адаптивная */
+.calc-card {
+  cursor: default;
+}
+
+.calc-card .calc-fields {
+  margin: var(--space-md) 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.calc-field {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-sm);
+}
+
+.calc-field label {
+  font-size: 14px;
+  color: var(--on-surface);
+  min-width: 100px;
+  font-weight: 500;
+}
+
+.calc-field select {
+  flex: 1;
+  min-width: 140px;
+  padding: var(--space-sm) var(--space-md);
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--on-surface);
+  font-size: 13px;
+  transition: border var(--transition), box-shadow var(--transition);
+}
+
+.calc-field select:focus {
+  outline: none;
+  border-color: var(--border-active);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.calc-result-btn {
+  padding: var(--space-md) var(--space-2xl);
+  background: var(--primary);
+  color: var(--on-primary);
+  border: none;
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition), transform var(--transition);
+  margin-top: var(--space-xs);
+}
+
+.calc-result-btn:hover {
+  background: var(--primary-hover);
+  transform: scale(1.02);
+}
+
+.calc-result-btn:active {
+  transform: scale(0.98);
+}
+
+/* Результат калькулятора */
+.calc-result {
+  margin-top: var(--space-md);
+  display: none;
+}
+
+.calc-result-content {
+  padding: var(--space-lg) var(--space-lg);
+  border-radius: var(--radius-sm);
+  border-left: 4px solid var(--primary);
+  background: var(--surface);
+}
+
+.calc-result-content strong {
+  font-size: 16px;
+  color: var(--on-surface);
+}
+
+.calc-detail {
+  margin: var(--space-sm) 0;
+  font-size: 13px;
+  color: var(--on-surface-secondary);
+}
+
+.calc-interpretation {
+  margin-top: var(--space-sm);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-sm);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.calc-interpretation.risk-low {
+  background: var(--success-bg);
+  color: var(--success-text);
+}
+
+.calc-interpretation.risk-moderate {
+  background: var(--warning-bg);
+  color: var(--warning-text);
+}
+
+.calc-interpretation.risk-high {
+  background: var(--danger-bg);
+  color: var(--danger-text);
+}
+
+/* Адаптивность калькуляторов */
+@media (max-width: 768px) {
+  .calc-field {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .calc-field label {
+    min-width: auto;
+  }
+  
+  .calc-field select {
+    min-width: 100%;
+  }
+  
+  .calc-result-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .calc-result-btn {
+    padding: var(--space-sm) var(--space-lg);
+    font-size: 13px;
+  }
+  
+  .calc-result-content {
+    padding: var(--space-md);
+  }
+  
+  .calc-result-content strong {
+    font-size: 15px;
+  }
+}

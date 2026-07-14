@@ -1,0 +1,18 @@
+/* ============================================================
+   MAIN — Импорт всех стилей
+   ============================================================ */
+
+/* Базовые переменные и сброс */
+@import url('variables.css');
+@import url('base.css');
+
+/* Компоненты */
+@import url('header.css');
+@import url('sidebar.css');
+@import url('home.css');
+@import url('documents.css');
+@import url('calculators.css');
+@import url('modal.css');
+
+/* Адаптивность */
+@import url('responsive.css');

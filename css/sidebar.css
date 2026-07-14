@@ -1,0 +1,99 @@
+/* ============================================================
+   SIDEBAR — Боковое меню
+   ============================================================ */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: -300px;
+  width: 280px;
+  height: 100vh;
+  height: 100dvh;
+  background: var(--surface-card);
+  border-right: 1px solid var(--border);
+  z-index: 200;
+  padding: var(--space-lg) 0;
+  transition: left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  box-shadow: 4px 0 24px var(--shadow);
+}
+
+.sidebar.open {
+  left: 0;
+}
+
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: 0 var(--space-xl) var(--space-xl) var(--space-xl);
+  border-bottom: 1px solid var(--border);
+  margin-bottom: var(--space-lg);
+}
+
+.brand-emoji {
+  font-size: 32px;
+}
+
+.brand-name {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--primary);
+}
+
+.brand-version {
+  font-size: 11px;
+  color: var(--on-surface-muted);
+  margin-left: auto;
+  background: var(--surface);
+  padding: 2px 10px;
+  border-radius: 20px;
+}
+
+.nav-list {
+  list-style: none;
+  padding: 0 var(--space-sm);
+  flex: 1;
+}
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-md) var(--space-lg);
+  border-radius: var(--radius-sm);
+  color: var(--on-surface-secondary);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 500;
+  transition: all var(--transition);
+  margin-bottom: 2px;
+}
+
+.nav-link:hover {
+  background: var(--surface);
+  color: var(--on-surface);
+}
+
+.nav-link.active {
+  background: var(--primary);
+  color: var(--on-primary);
+}
+
+.nav-link.active:hover {
+  background: var(--primary-hover);
+}
+
+.sidebar-footer {
+  padding: var(--space-lg) var(--space-xl);
+  border-top: 1px solid var(--border);
+  font-size: 13px;
+  color: var(--on-surface-secondary);
+}
+
+.offline-status {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+}
